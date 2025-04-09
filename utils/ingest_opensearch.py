@@ -11,11 +11,23 @@ def ingest_comment_from_text(client, content):
         'docketId': data['data']['attributes']['docketId'],
         'commentId': data['data']['id']
     }
-    ingest(client, document, id = document['commentId'])
+    ingest(client, document, id = document['commentId'], index= 'comments')
 
-def ingest(client, document, id):
-    response = client.index(index = 'comments', body = document, id = id)
+def ingest(client, document, id, index):
+    response = client.index(index = index, body = document, id = id)
     print(response)
+
+def ingest_extracted_text_from_text(client, data):
+
+    document = {
+        'extractedText': data['extractedText'],
+        'extractionMethod': data['extractionMethod'],
+        'docketId': data['docketId'],
+        'commentId': data['commentId'],
+        'attachmentId': data['attachmentId']
+    }
+    ingest(client, document, id = document['commentId'], index= 'extracted_text_test')
+
 
 def ingest_comment(client, bucket, key):
     obj = bucket.Object(key)
@@ -32,7 +44,6 @@ def ingest_all_comments(client, bucket):
     for obj in bucket.objects.all():
         if obj.key.endswith('.json') and ('/comments/' in obj.key):
             ingest_comment(client, bucket, obj.key)
-
 
 if __name__ == '__main__':
     client = create_client()
