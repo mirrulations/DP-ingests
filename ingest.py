@@ -4,6 +4,7 @@ from .utils.ingest_comment import insert_comment
 from .utils.ingest_docket import insert_docket
 from .utils.ingest_document import insert_document
 from .utils.ingest_opensearch import ingest_comment_from_text as insert_comment_os
+from .utils.ingest_summary import insert_summary
 
 
 def ingest_comment(contents):
@@ -26,4 +27,9 @@ def ingest_docket(contents):
     sql.commit()
     sql.close()
 
+def ingest_summary(contents):
+    sql = connect_sql()
+    insert_summary(sql, contents)
+    sql.commit()
+    sql.close()
 
