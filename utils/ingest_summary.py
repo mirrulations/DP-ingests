@@ -5,18 +5,9 @@ import sys
 import os
 from datetime import datetime
 
-# Fetch database connection parameters from environment variables
-
-
-# Function to parse date fields
-def parse_date(date_str):
-    if date_str:
-        return datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%SZ")
-    return None
-
-
-# Function to insert comment into the database
-def insert_comment(conn, json_data):
+# Function to insert a summary into the database
+# json_data is {"docket_id": docket_id,"summary_text": summary_text}
+def insert_summary(conn, json_data):
     # Parse the JSON data
     data = json.loads(json_data)
 
