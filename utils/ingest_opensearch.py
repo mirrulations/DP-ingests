@@ -21,7 +21,7 @@ def ingest_extracted_text_from_text(client, data):
 
     document = {
         'extractedText': data['extractedText'],
-        'extractionMethod': data['extractionMethod'],
+        'extractedMethod': data['extractedMethod'],
         'docketId': data['docketId'],
         'commentId': data['commentId'],
         'attachmentId': data['attachmentId']
