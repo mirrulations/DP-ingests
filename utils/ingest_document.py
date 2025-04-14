@@ -3,16 +3,7 @@ import psycopg
 from dotenv import load_dotenv
 import sys
 import os
-from datetime import datetime
-
-# Fetch database connection parameters from environment variables
-
-
-# Function to parse date fields
-def _parse_date(date_str):
-    if date_str:
-        return datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%SZ")
-    return None
+from .date import parse as parse_date
 
 
 # Function to insert document into the database
@@ -33,16 +24,16 @@ def insert_document(conn, json_data):
         attributes.get("address2"),
         attributes.get("agencyId"),
         attributes.get("allowLateComments"),
-        _parse_date(attributes.get("authorDate")),
+        parse_date(attributes.get("authorDate")),
         attributes.get("category"),
         attributes.get("city"),
         attributes.get("comment"),
-        _parse_date(attributes.get("commentEndDate")),
-        _parse_date(attributes.get("commentStartDate")),
+        parse_date(attributes.get("commentEndDate")),
+        parse_date(attributes.get("commentStartDate")),
         attributes.get("country"),
         attributes.get("docketId"),
         attributes.get("documentType"),
-        _parse_date(attributes.get("effectiveDate")),
+        parse_date(attributes.get("effectiveDate")),
         attributes.get("email"),
         attributes.get("fax"),
         attributes.get("field1"),
@@ -50,16 +41,16 @@ def insert_document(conn, json_data):
         attributes.get("firstName"),
         attributes.get("govAgency"),
         attributes.get("govAgencyType"),
-        _parse_date(attributes.get("implementationDate")),
+        parse_date(attributes.get("implementationDate")),
         attributes.get("lastName"),
-        _parse_date(attributes.get("modifyDate")),
+        parse_date(attributes.get("modifyDate")),
         attributes.get("openForComment"),
         attributes.get("organization"),
         attributes.get("phone"),
-        _parse_date(attributes.get("postedDate")),
-        _parse_date(attributes.get("postmarkDate")),
+        parse_date(attributes.get("postedDate")),
+        parse_date(attributes.get("postmarkDate")),
         attributes.get("reasonWithdrawn"),
-        _parse_date(attributes.get("receiveDate")),
+        parse_date(attributes.get("receiveDate")),
         attributes.get("regWriterInstruction"),
         attributes.get("restrictReason"),
         attributes.get("restrictReasonType"),

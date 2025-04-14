@@ -4,15 +4,7 @@ from dotenv import load_dotenv
 import sys
 import os
 from datetime import datetime
-
-# Fetch database connection parameters from environment variables
-
-
-# Function to parse date fields
-def parse_date(date_str):
-    if date_str:
-        return datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%SZ")
-    return None
+from .date import parse as parse_date
 
 
 # Function to insert comment into the database
