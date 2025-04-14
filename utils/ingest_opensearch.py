@@ -26,7 +26,7 @@ def ingest_extracted_text_from_text(client, data):
         'commentId': data['commentId'],
         'attachmentId': data['attachmentId']
     }
-    ingest(client, document, id = document['commentId'], index= 'extracted_text_test')
+    ingest(client, document, id = document['attachmentId'], index= 'extracted_text_test')
 
 
 def ingest_comment(client, bucket, key):
