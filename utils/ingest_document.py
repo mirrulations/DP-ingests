@@ -4,6 +4,8 @@ from dotenv import load_dotenv
 import sys
 import os
 from .date import parse as parse_date
+from .dummy_docket import create as create_dummy_docket
+from .ingest_docket import insert_docket
 
 
 # Function to insert document into the database
@@ -15,6 +17,11 @@ def insert_document(conn, json_data):
     attributes = data["data"]["attributes"]
     document_id = data["data"]["id"]
     document_api_link = data["data"]["links"]["self"]
+
+    # if the docket is null, ingest a dummy docket
+    if attributes.get("docketId") is None:
+        docket = create_dummy_docket(attributes)
+        insert_docket(conn, docket)
 
     # Prepare the values for insertion
     values = (
