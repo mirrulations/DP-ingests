@@ -5,7 +5,7 @@ Data ingestion scripts used by the Data Product team for inserting regulatory da
 
 ## Ingestion Scripts and What They Do
 
-### 1. `ingest.py`
+### `ingest.py`
 Main entry point for running ingestion scripts:
 - OpenSearch: comments, extracted text  
 - PostgreSQL: documents, dockets, summaries  
