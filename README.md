@@ -1,5 +1,7 @@
 # DP-ingests
-This repository contains ingest scripts created by Data Product for use with ETL. Data ingestion scripts used by the Data Product team for inserting regulatory data (dockets, documents, comments, summaries, and extracted text) into both PostgreSQL and OpenSearch indices.
+This repository contains ingest scripts created by Data Product for use with ETL.
+
+Data ingestion scripts used by the Data Product team for inserting regulatory data (dockets, documents, comments, summaries, and extracted text) into both PostgreSQL and OpenSearch indices.
 
 ## Ingestion Scripts and What They Do
 
