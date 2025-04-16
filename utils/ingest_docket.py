@@ -20,22 +20,23 @@ def insert_docket(conn, json_data):
     values = (
         docket_id,
         docket_api_link,
-        attributes["agencyId"],
-        attributes["category"],
-        attributes["docketType"],
-        parse_date(attributes["effectiveDate"]),
-        attributes["field1"],
-        attributes["field2"],
-        parse_date(attributes["modifyDate"]),
-        attributes["organization"],
-        attributes["petitionNbr"],
-        attributes["program"],
-        attributes["rin"],
-        attributes["shortTitle"],
-        attributes["subType"],
-        attributes["subType2"],
-        attributes["title"],
+        attributes.get("agencyId"),
+        attributes.get("category"),
+        attributes.get("docketType"),
+        parse_date(attributes.get("effectiveDate")),
+        attributes.get("field1"),
+        attributes.get("field2"),
+        parse_date(attributes.get("modifyDate")),
+        attributes.get("organization"),
+        attributes.get("petitionNbr"),
+        attributes.get("program"),
+        attributes.get("rin"),
+        attributes.get("shortTitle"),
+        attributes.get("subType"),
+        attributes.get("subType2"),
+        attributes.get("title"),
     )
+
 
     # Insert into the database
     try:
