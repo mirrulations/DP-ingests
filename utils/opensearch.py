@@ -45,7 +45,6 @@ def connect():
     port = secret['port']
     region = 'us-east-1'
 
-        raise ValueError('Please set the environment variables OPENSEARCH_HOST and OPENSEARCH_PORT')
     
     service = 'aoss'
     credentials = boto3.Session().get_credentials()
