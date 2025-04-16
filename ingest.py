@@ -10,11 +10,15 @@ from .utils.ingest_summary import insert_summary
 
 def ingest_comment(contents):
     os = connect_opensearch()
-   #sql = connect_sql()
-   #insert_comment(sql,contents)
     insert_comment_os(os,contents)
-   #sql.commit()
-   #sql.close()
+
+
+def ingest_comment_sql(contents):
+    sql = connect_sql()
+    insert_comment(sql,contents)
+    sql.commit()
+    sql.close()
+
 
 def ingest_extracted_text(contents):
     os = connect_opensearch()
