@@ -45,7 +45,6 @@ def connect():
     port = secret['port']
     region = 'us-east-1'
 
-    if host is None or port is None:
         raise ValueError('Please set the environment variables OPENSEARCH_HOST and OPENSEARCH_PORT')
     
     service = 'aoss'
