@@ -71,7 +71,43 @@ def insert_comment(conn, json_data):
                 comment_title, is_withdrawn, postal_code
             ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
                     %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
-                    %s, %s, %s);
+                    %s, %s, %s)
+            ON CONFLICT (comment_id) DO UPDATE
+            SET
+                api_link = EXCLUDED.api_link,
+                document_id = EXCLUDED.document_id,
+                duplicate_comment_count = EXCLUDED.duplicate_comment_count,
+                address1 = EXCLUDED.address1,
+                address2 = EXCLUDED.address2,
+                agency_id = EXCLUDED.agency_id,
+                city = EXCLUDED.city,
+                comment_category = EXCLUDED.comment_category,
+                comment = EXCLUDED.comment,
+                country = EXCLUDED.country,
+                docket_id = EXCLUDED.docket_id,
+                document_type = EXCLUDED.document_type,
+                email = EXCLUDED.email,
+                fax = EXCLUDED.fax,
+                flex_field1 = EXCLUDED.flex_field1,
+                flex_field2 = EXCLUDED.flex_field2,
+                first_name = EXCLUDED.first_name,
+                submitter_gov_agency = EXCLUDED.submitter_gov_agency,
+                submitter_gov_agency_type = EXCLUDED.submitter_gov_agency_type,
+                last_name = EXCLUDED.last_name,
+                modification_date = EXCLUDED.modification_date,
+                submitter_org = EXCLUDED.submitter_org,
+                phone = EXCLUDED.phone,
+                posted_date = EXCLUDED.posted_date,
+                postmark_date = EXCLUDED.postmark_date,
+                reason_withdrawn = EXCLUDED.reason_withdrawn,
+                received_date = EXCLUDED.received_date,
+                restriction_reason = EXCLUDED.restriction_reason,
+                restriction_reason_type = EXCLUDED.restriction_reason_type,
+                state_province_region = EXCLUDED.state_province_region,
+                comment_subtype = EXCLUDED.comment_subtype,
+                comment_title = EXCLUDED.comment_title,
+                is_withdrawn = EXCLUDED.is_withdrawn,
+                postal_code = EXCLUDED.postal_code;
             """
 
             cursor.execute(insert_query, values)
