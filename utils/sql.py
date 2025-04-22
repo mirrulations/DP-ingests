@@ -6,7 +6,7 @@ def connect():
 
     if os.environ.get('AWS_SAM_LOCAL'):
         conn_params = {
-            "dbname": os.environ.get('POSTGRES_NAME'),
+            "dbname": os.environ.get('POSTGRES_DB'),
             "user": os.environ.get('POSTGRES_USER'),
             "password": os.environ.get('POSTGRES_PASSWORD'),
             "host": os.environ.get('POSTGRES_HOST'),
