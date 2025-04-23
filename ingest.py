@@ -8,7 +8,7 @@ from .utils.ingest_opensearch import ingest_extracted_text_from_text as insert_e
 from .utils.ingest_summary import insert_summary
 
 
-def ingest_comment(contents):
+def ingest_comment_opensearch(contents):
     os = connect_opensearch()
     insert_comment_os(os,contents)
 
