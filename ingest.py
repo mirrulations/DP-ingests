@@ -9,7 +9,7 @@ from .utils.ingest_summary import insert_summary
 from .utils.ingest_abstract import insert_abstract
 
 
-def ingest_comment(contents):
+def ingest_comment_opensearch(contents):
     os = connect_opensearch()
     insert_comment_os(os,contents)
 

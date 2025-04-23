@@ -1,4 +1,4 @@
-from .ingest import ingest_comment, ingest_docket, ingest_document
+from .ingest import ingest_comment_opensearch, ingest_docket, ingest_document
 
 def lambda_handler(event, context):
     docket = """
@@ -278,4 +278,4 @@ def lambda_handler(event, context):
 
     ingest_docket(docket)
     ingest_document(document)
-    ingest_comment(comment)
+    ingest_comment_opensearch(comment)
