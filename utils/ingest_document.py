@@ -84,7 +84,50 @@ def insert_document(conn, json_data):
                 receive_date, reg_writer_instruction, restriction_reason,
                 restriction_reason_type, state_province_region, subtype,
                 document_title, topics, is_withdrawn, postal_code
-            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            ON CONFLICT (document_id) DO UPDATE
+            SET
+                document_api_link = EXCLUDED.document_api_link,
+                address1 = EXCLUDED.address1,
+                address2 = EXCLUDED.address2,
+                agency_id = EXCLUDED.agency_id,
+                is_late_comment = EXCLUDED.is_late_comment,
+                author_date = EXCLUDED.author_date,
+                comment_category = EXCLUDED.comment_category,
+                city = EXCLUDED.city,
+                comment = EXCLUDED.comment,
+                comment_end_date = EXCLUDED.comment_end_date,
+                comment_start_date = EXCLUDED.comment_start_date,
+                country = EXCLUDED.country,
+                docket_id = EXCLUDED.docket_id,
+                document_type = EXCLUDED.document_type,
+                effective_date = EXCLUDED.effective_date,
+                email = EXCLUDED.email,
+                fax = EXCLUDED.fax,
+                flex_field1 = EXCLUDED.flex_field1,
+                flex_field2 = EXCLUDED.flex_field2,
+                first_name = EXCLUDED.first_name,
+                submitter_gov_agency = EXCLUDED.submitter_gov_agency,
+                submitter_gov_agency_type = EXCLUDED.submitter_gov_agency_type,
+                implementation_date = EXCLUDED.implementation_date,
+                last_name = EXCLUDED.last_name,
+                modify_date = EXCLUDED.modify_date,
+                is_open_for_comment = EXCLUDED.is_open_for_comment,
+                submitter_org = EXCLUDED.submitter_org,
+                phone = EXCLUDED.phone,
+                posted_date = EXCLUDED.posted_date,
+                postmark_date = EXCLUDED.postmark_date,
+                reason_withdrawn = EXCLUDED.reason_withdrawn,
+                receive_date = EXCLUDED.receive_date,
+                reg_writer_instruction = EXCLUDED.reg_writer_instruction,
+                restriction_reason = EXCLUDED.restriction_reason,
+                restriction_reason_type = EXCLUDED.restriction_reason_type,
+                state_province_region = EXCLUDED.state_province_region,
+                subtype = EXCLUDED.subtype,
+                document_title = EXCLUDED.document_title,
+                topics = EXCLUDED.topics,
+                is_withdrawn = EXCLUDED.is_withdrawn,
+                postal_code = EXCLUDED.postal_code;
             """
             cursor.execute(insert_query, values)
             print(f"Document {document_id} inserted successfully.")

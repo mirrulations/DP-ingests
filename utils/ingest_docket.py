@@ -47,7 +47,25 @@ def insert_docket(conn, json_data):
                 effective_date, flex_field1, flex_field2, modify_date, organization,
                 petition_nbr, program, rin, short_title, flex_subtype1, flex_subtype2,
                 docket_title
-            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s);
+            ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            ON CONFLICT (docket_id) DO UPDATE
+            SET
+                docket_api_link = EXCLUDED.docket_api_link,
+                agency_id = EXCLUDED.agency_id,
+                docket_category = EXCLUDED.docket_category,
+                docket_type = EXCLUDED.docket_type,
+                effective_date = EXCLUDED.effective_date,
+                flex_field1 = EXCLUDED.flex_field1,
+                flex_field2 = EXCLUDED.flex_field2,
+                modify_date = EXCLUDED.modify_date,
+                organization = EXCLUDED.organization,
+                petition_nbr = EXCLUDED.petition_nbr,
+                program = EXCLUDED.program,
+                rin = EXCLUDED.rin,
+                short_title = EXCLUDED.short_title,
+                flex_subtype1 = EXCLUDED.flex_subtype1,
+                flex_subtype2 = EXCLUDED.flex_subtype2,
+                docket_title = EXCLUDED.docket_title;
             """
             cursor.execute(insert_query, values)
             print(f"Docket {docket_id} inserted successfully.")
