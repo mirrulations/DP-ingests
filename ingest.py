@@ -35,6 +35,7 @@ def ingest_document(contents):
 def ingest_docket(contents):
     sql = connect_sql()
     insert_docket(sql, contents)
+    insert_abstract(sql, contents)
     sql.commit()
     sql.close()
 
@@ -44,8 +45,3 @@ def ingest_summary(contents):
     sql.commit()
     sql.close()
 
-def ingest_abstract(contents):
-    sql = connect_sql()
-    insert_abstract(sql, contents)
-    sql.commit()
-    sql.close()
