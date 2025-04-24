@@ -3,7 +3,11 @@ import os
 from common.utils.secrets import get_secret
 
 def connect():
-
+    """
+    Create a connection to the PostgreSQL database.
+    If running locally, connect to the local PostgreSQL instance.
+    If running in AWS, connect to the production PostgreSQL instance.
+    """
     if os.environ.get('AWS_SAM_LOCAL'):
         conn_params = {
             "dbname": os.environ.get('POSTGRES_DB'),

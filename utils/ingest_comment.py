@@ -7,8 +7,10 @@ from datetime import datetime
 from .date import parse as parse_date
 
 
-# Function to insert comment into the database
 def insert_comment(conn, json_data):
+    """
+    Insert comment into the database.
+    """
     # Parse the JSON data
     data = json.loads(json_data)
 
@@ -116,8 +118,10 @@ def insert_comment(conn, json_data):
         print(f"An error occurred: {e}")
 
 
-# Main function to read JSON from file and insert into the database
 def main():
+    """
+    Main entry point for the script. Reads a JSON file and inserts the data into the database.
+    """
     if len(sys.argv) != 2:
         print("Usage: python IngestComment.py <path_to_json_file>")
         sys.exit(1)

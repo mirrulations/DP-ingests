@@ -6,8 +6,10 @@ import os
 from .date import parse as parse_date
 
 
-# Function to insert docket into the database
 def insert_docket(conn, json_data):
+    """
+    Insert docket into the database.
+    """
     # Parse the JSON data
     data = json.loads(json_data)
 
@@ -73,8 +75,10 @@ def insert_docket(conn, json_data):
         print(f"An error occurred: {e}")
 
 
-# Main function to read JSON from file and insert into the database
 def main():
+    """
+    Reads JSON from file and insert into the database
+    """
     if len(sys.argv) != 2:
         print("Usage: python IngestDocket.py <path_to_json_file>")
         sys.exit(1)

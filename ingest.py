@@ -9,11 +9,17 @@ from .utils.ingest_summary import insert_summary
 
 
 def ingest_comment_opensearch(contents):
+    """
+    Ingests a comment from a text file into OpenSearch.
+    """
     os = connect_opensearch()
     insert_comment_os(os,contents)
 
 
 def ingest_comment_sql(contents):
+    """
+    Ingests a comment from a text file into SQL.
+    """
     sql = connect_sql()
     insert_comment(sql,contents)
     sql.commit()
@@ -21,23 +27,35 @@ def ingest_comment_sql(contents):
 
 
 def ingest_extracted_text(contents):
+    """
+    Ingests extracted text from a text file into OpenSearch.
+    """
     os = connect_opensearch()
     insert_extracted_text_os(os,contents)
 
 
 def ingest_document(contents):
+    """
+    Ingests a document from a text file into SQL.
+    """
     sql = connect_sql()
     insert_document(sql, contents)
     sql.commit()
     sql.close()
 
 def ingest_docket(contents):
+    """
+    Ingests a docket from a text file into SQL.
+    """
     sql = connect_sql()
     insert_docket(sql, contents)
     sql.commit()
     sql.close()
 
 def ingest_summary(contents):
+    """
+    Ingests a summary from a text file into SQL.
+    """
     sql = connect_sql()
     insert_summary(sql, contents)
     sql.commit()

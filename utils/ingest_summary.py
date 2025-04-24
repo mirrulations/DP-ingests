@@ -6,9 +6,11 @@ import os
 from datetime import datetime
 
 
-# Function to insert a summary into the database
 # json_data is {"docket_id": docket_id,"summary_text": summary_text}
 def insert_summary(conn, data):
+    """
+    Insert summary into the database.
+    """
     docket_id = data["docket_id"]
     summary_text = data["summary_text"]
 

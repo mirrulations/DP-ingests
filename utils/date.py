@@ -1,8 +1,10 @@
 from datetime import datetime
 
 
-# Function to parse date fields
 def parse(date: str):
+    """
+    Parse date fields
+    """
     if date:
         # date can be 0000-12-30T00:00:00Z in certain cases, like postedDate in the comment CMS-2009-0058-DRAFT-2645
         if date.startswith("0000"):  
