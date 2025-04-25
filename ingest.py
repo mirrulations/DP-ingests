@@ -46,7 +46,7 @@ def ingest_document(contents):
 
 def ingest_docket(contents):
     """
-    Ingests a docket from a text file into SQL.
+    Ingests a docket and its abstract from a text file into SQL.
     """
     sql = connect_sql()
     insert_docket(sql, contents)
