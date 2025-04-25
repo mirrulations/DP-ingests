@@ -5,15 +5,12 @@ import boto3
 from opensearchpy import OpenSearch, RequestsHttpConnection, AWSV4SignerAuth
 from common.utils.secrets import get_secret
 
-'''
-This function creates an OpenSearch client. If the environment variables OPENSEARCH_HOST if OPENSEARCH_PORT are not
-set, an error is raised. If the host is set to 'localhost', the client is created with basic authentication. Otherwise,
-the client is created with AWS request signing. The function returns the OpenSearch client.
-
-All code that depends on whether we are connecting to a local or production OpenSearch instance is inside of this function.
-Outside of the function, interaction with the client is the same regardless of the environment.
-'''
 def connect():
+    """
+    Create an OpenSearch client.
+    If running locally, connect to the local OpenSearch instance.
+    If running in AWS, connect to the production OpenSearch instance.
+    """
     load_dotenv()
 
     is_local = os.getenv('AWS_SAM_LOCAL', 'false').lower() == 'true'

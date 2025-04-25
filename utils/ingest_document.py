@@ -136,7 +136,6 @@ def insert_document(conn, json_data):
 
 
 # Main function to read JSON from file and insert into the database
-# Main function to read JSON from file and insert into the database
 def main():
     if len(sys.argv) != 2:
         print("Usage: python IngestDocument.py <path_to_json_file>")
