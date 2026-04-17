@@ -1,6 +1,9 @@
 from .ingest import ingest_comment_opensearch, ingest_docket, ingest_document
 
 def lambda_handler(event, context):
+    """
+    Lambda function to ingest a docket, document, and comment into the database.
+    """
     docket = """
     {
         "data": {
